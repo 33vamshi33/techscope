@@ -105,6 +105,7 @@ export default function SidebarFilters({
               <SelectItem value="24h">Last 24 hours</SelectItem>
               <SelectItem value="week">Last week</SelectItem>
               <SelectItem value="month">Last month</SelectItem>
+              <SelectItem value="all">All time</SelectItem>
             </SelectContent>
           </Select>
         </div>

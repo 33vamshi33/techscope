@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack tech news aggregation application built with React and Express. The application displays curated tech articles from various sources with filtering, search, and social interaction features. It uses a modern tech stack with TypeScript, Tailwind CSS for styling, shadcn/ui components, and Drizzle ORM for database operations.
+This is a vibrant tech blog aggregator called TechScope that curates content from major technology companies and presents their concepts in an engaging, fun, and easily digestible format for tech enthusiasts. The application features a modern design inspired by Product Hunt and The Verge, with interactive content cards, working navigation, and article detail pages.
 
 ## User Preferences
 
@@ -97,5 +97,16 @@ Preferred communication style: Simple, everyday language.
 - PostgreSQL database (Neon serverless recommended)
 - Environment variables: DATABASE_URL, NODE_ENV
 - Port configuration for web server
+
+## Recent Changes
+
+- **December 2024**: Enhanced the application with major tech companies (Netflix, Apple, Microsoft, Amazon, Tesla, OpenAI, Spotify, Uber, Airbnb, Shopify)
+- **Navigation**: Fixed all navigation issues - articles are now clickable and open detailed article pages
+- **Dropdown Menus**: Added functional dropdown menus in header for Categories and Sources
+- **Article Detail Pages**: Created comprehensive article detail pages with full content, interaction buttons, and navigation
+- **Routing**: Implemented proper routing with wouter for article pages (/article/:id)
+- **Filtering**: Fixed filtering system to show all articles by default with working filters
+- **Content**: Added rich sample articles from major tech companies with detailed explanations
+- **UI/UX**: Enhanced card hover effects, gradients, and interactive elements
 
 The application is designed to be easily deployable to platforms like Replit, Vercel, or traditional hosting providers with minimal configuration changes.

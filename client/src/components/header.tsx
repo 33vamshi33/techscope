@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Search, Menu, Bookmark } from "lucide-react";
+import { Search, Menu, Bookmark, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Link } from "wouter";
 
 interface HeaderProps {
   searchQuery: string;
@@ -16,12 +18,14 @@ export default function Header({ searchQuery, onSearchChange }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">🔭</span>
+          <Link href="/">
+            <div className="flex items-center space-x-2 cursor-pointer">
+              <div className="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                <span className="text-white text-sm">🔭</span>
+              </div>
+              <h1 className="text-xl font-bold text-primary">TechScope</h1>
             </div>
-            <h1 className="text-xl font-bold text-primary">TechScope</h1>
-          </div>
+          </Link>
           
           {/* Search Bar */}
           <div className="flex-1 max-w-lg mx-8">
@@ -39,9 +43,86 @@ export default function Header({ searchQuery, onSearchChange }: HeaderProps) {
           
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors font-medium">Featured</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors font-medium">Categories</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors font-medium">Sources</a>
+            <Link href="/">
+              <Button variant="ghost" className="text-muted-foreground hover:text-primary transition-colors font-medium">
+                Featured
+              </Button>
+            </Link>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-muted-foreground hover:text-primary transition-colors font-medium flex items-center">
+                  Categories
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-48">
+                <DropdownMenuItem>
+                  <span className="mr-2">🤖</span>
+                  AI & Machine Learning
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">💻</span>
+                  Web Development
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">📱</span>
+                  Mobile Technology
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">🔐</span>
+                  Cybersecurity
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">⚡</span>
+                  Performance
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">🔗</span>
+                  Blockchain
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="text-muted-foreground hover:text-primary transition-colors font-medium flex items-center">
+                  Sources
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-48">
+                <DropdownMenuItem>
+                  <span className="mr-2">🤖</span>
+                  OpenAI
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">🔴</span>
+                  Netflix
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">🍎</span>
+                  Apple
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">⚡</span>
+                  Tesla
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">🟢</span>
+                  Spotify
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">🟦</span>
+                  Microsoft
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span className="mr-2">🟡</span>
+                  Amazon
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium">
               <Bookmark className="mr-2 h-4 w-4" />
               My Feed
@@ -49,14 +130,30 @@ export default function Header({ searchQuery, onSearchChange }: HeaderProps) {
           </nav>
           
           {/* Mobile Menu */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <Menu className="h-5 w-5 text-muted-foreground" />
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="md:hidden p-2">
+                <Menu className="h-5 w-5 text-muted-foreground" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem>
+                <Link href="/" className="w-full">Featured</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <span className="w-full">Categories</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <span className="w-full">Sources</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <span className="w-full flex items-center">
+                  <Bookmark className="mr-2 h-4 w-4" />
+                  My Feed
+                </span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>

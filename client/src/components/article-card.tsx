@@ -4,6 +4,7 @@ import { Heart, Share, Bookmark } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "wouter";
 import type { Article } from "@shared/schema";
 
 interface ArticleCardProps {
@@ -35,7 +36,8 @@ export default function ArticleCard({ article }: ArticleCardProps) {
   };
 
   return (
-    <div className="bg-card rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group card-hover">
+    <Link href={`/article/${article.id}`}>
+      <div className="bg-card rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group card-hover">
       <img 
         src={article.imageUrl} 
         alt={article.title}
@@ -99,5 +101,6 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         </div>
       </div>
     </div>
+    </Link>
   );
 }

@@ -14,21 +14,22 @@ import type { Article } from "@shared/schema";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedSources, setSelectedSources] = useState<string[]>(["TechCrunch", "Ars Technica"]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>(["AI/ML"]);
-  const [timeRange, setTimeRange] = useState("24h");
+  const [selectedSources, setSelectedSources] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [timeRange, setTimeRange] = useState("all");
 
   const { data: featuredArticles, isLoading: featuredLoading } = useQuery({
     queryKey: ['/api/articles/featured'],
   });
 
+  const articlesQueryParams = new URLSearchParams();
+  if (selectedSources.length > 0) articlesQueryParams.set('sources', selectedSources.join(','));
+  if (selectedCategories.length > 0) articlesQueryParams.set('categories', selectedCategories.join(','));
+  if (timeRange && timeRange !== "all") articlesQueryParams.set('timeRange', timeRange);
+  if (searchQuery) articlesQueryParams.set('search', searchQuery);
+
   const { data: articles, isLoading: articlesLoading } = useQuery({
-    queryKey: ['/api/articles', {
-      sources: selectedSources.length > 0 ? selectedSources.join(',') : undefined,
-      categories: selectedCategories.length > 0 ? selectedCategories.join(',') : undefined,
-      timeRange,
-      search: searchQuery || undefined,
-    }],
+    queryKey: ['/api/articles?' + articlesQueryParams.toString()],
   });
 
   const { data: sources } = useQuery({
