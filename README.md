@@ -103,13 +103,19 @@ npm run dev
 
 ## Deployment
 
-The app is designed for easy deployment to platforms like:
-- Replit
-- Vercel
-- Netlify
-- Traditional hosting providers
+### Quick Deploy to Vercel
 
-The app uses in-memory storage and is ready for immediate deployment to Vercel, Netlify, or other serverless platforms.
+1. Push to GitHub: `git push origin main`
+2. Go to [vercel.com](https://vercel.com) and import your repository
+3. Vercel will automatically deploy using the included configuration
+
+### Supported Platforms
+- ✅ **Vercel** (recommended) - Zero configuration
+- ✅ **Netlify** - Serverless functions
+- ✅ **Railway** - Container deployment
+- ✅ **Traditional hosting** - Node.js servers
+
+The app uses in-memory storage and works without any database setup. See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
 
 ## Contributing
 

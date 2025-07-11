@@ -1,14 +1,14 @@
 {
   "version": 2,
   "functions": {
-    "server/index.ts": {
-      "runtime": "@vercel/node@3"
+    "api/index.ts": {
+      "runtime": "@vercel/node@20.x"
     }
   },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/server/index.ts"
+      "destination": "/api/index.ts"
     },
     {
       "source": "/(.*)",
@@ -17,6 +17,5 @@
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
-  "installCommand": "npm install",
-  "framework": null
+  "installCommand": "npm install"
 }
