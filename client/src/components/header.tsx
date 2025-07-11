@@ -126,6 +126,62 @@ export default function Header({ searchQuery, onSearchChange }: HeaderProps) {
                 </DropdownMenuItem>
                 <DropdownMenuItem 
                   className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Google")}
+                >
+                  <span className="mr-2">🔵</span>
+                  Google
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Apple")}
+                >
+                  <span className="mr-2">🍎</span>
+                  Apple
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Tesla")}
+                >
+                  <span className="mr-2">⚡</span>
+                  Tesla
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Microsoft")}
+                >
+                  <span className="mr-2">🟦</span>
+                  Microsoft
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Amazon")}
+                >
+                  <span className="mr-2">🟡</span>
+                  Amazon
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Meta")}
+                >
+                  <span className="mr-2">🔵</span>
+                  Meta
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Spotify")}
+                >
+                  <span className="mr-2">🟢</span>
+                  Spotify
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Stripe")}
+                >
+                  <span className="mr-2">🟣</span>
+                  Stripe
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
                   onClick={() => onSearchChange("Apple")}
                 >
                   <span className="mr-2">🍎</span>
