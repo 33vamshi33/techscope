@@ -56,10 +56,11 @@ VITE_API_BASE_URL=
 ## Troubleshooting
 
 ### Build Errors
-If you get module resolution errors:
-1. Check that all imports use `.js` extensions
-2. Verify `vercel.json` configuration
-3. Ensure Node.js version is 18+ in Vercel settings
+If you get runtime or build errors:
+1. Check `vercel.json` uses correct build configuration
+2. Verify API function exports properly for serverless
+3. Ensure Node.js version is 18+ in Vercel project settings
+4. Check that API endpoints return proper responses
 
 ### API Not Working
 1. Check browser dev tools for CORS errors

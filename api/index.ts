@@ -1,10 +1,4 @@
-import express, { type Request, Response, NextFunction } from "express";
-import { createServer, type Server } from "http";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import express from "express";
 
 // Simple in-memory storage for articles
 const articles = [
@@ -153,5 +147,7 @@ app.get("/api/categories", (req, res) => {
   }
 });
 
-// For Vercel, export the app as default
-export default app;
+// For Vercel serverless functions
+export default (req: any, res: any) => {
+  return app(req, res);
+};
