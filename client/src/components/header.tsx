@@ -57,29 +57,47 @@ export default function Header({ searchQuery, onSearchChange }: HeaderProps) {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className="w-48">
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                className="cursor-pointer hover:bg-accent" 
+                onClick={() => onSearchChange("AI")}
+              >
                   <span className="mr-2">🤖</span>
                   AI & Machine Learning
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span className="mr-2">💻</span>
-                  Web Development
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span className="mr-2">📱</span>
-                  Mobile Technology
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span className="mr-2">🔐</span>
-                  Cybersecurity
-                </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("performance")}
+                >
                   <span className="mr-2">⚡</span>
                   Performance
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("security")}
+                >
+                  <span className="mr-2">🔐</span>
+                  Cybersecurity
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("blockchain")}
+                >
                   <span className="mr-2">🔗</span>
                   Blockchain
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("web")}
+                >
+                  <span className="mr-2">💻</span>
+                  Web Development
+                </DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("mobile")}
+                >
+                  <span className="mr-2">📱</span>
+                  Mobile Technology
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -92,31 +110,52 @@ export default function Header({ searchQuery, onSearchChange }: HeaderProps) {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className="w-48">
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("OpenAI")}
+                >
                   <span className="mr-2">🤖</span>
                   OpenAI
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Netflix")}
+                >
                   <span className="mr-2">🔴</span>
                   Netflix
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Apple")}
+                >
                   <span className="mr-2">🍎</span>
                   Apple
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Tesla")}
+                >
                   <span className="mr-2">⚡</span>
                   Tesla
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Spotify")}
+                >
                   <span className="mr-2">🟢</span>
                   Spotify
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Microsoft")}
+                >
                   <span className="mr-2">🟦</span>
                   Microsoft
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem 
+                  className="cursor-pointer hover:bg-accent" 
+                  onClick={() => onSearchChange("Amazon")}
+                >
                   <span className="mr-2">🟡</span>
                   Amazon
                 </DropdownMenuItem>

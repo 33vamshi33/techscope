@@ -108,7 +108,7 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {regularArticles.map((article: Article) => (
                   <ArticleCard key={article.id} article={article} />
                 ))}
@@ -117,7 +117,10 @@ export default function Home() {
 
             {/* Load More */}
             <div className="text-center py-8">
-              <Button className="gradient-bg text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+              <Button 
+                className="gradient-bg text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                onClick={() => window.location.reload()}
+              >
                 <Plus className="mr-2 h-4 w-4" />
                 Load More Articles
               </Button>
