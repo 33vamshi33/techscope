@@ -1,4 +1,4 @@
-import { articles, sources, categories, type Article, type InsertArticle, type Source, type Category } from "@shared/schema";
+import { articles, sources, categories, type Article, type InsertArticle, type Source, type Category } from "../shared/schema.js";
 
 export interface IStorage {
   // Articles

@@ -23,9 +23,9 @@ A vibrant tech blog aggregator that curates content from major technology compan
 
 ### Backend
 - **Express.js** with TypeScript
-- **Drizzle ORM** for database operations
-- **PostgreSQL** support (currently using in-memory storage)
+- **In-memory storage** for fast performance
 - **RESTful API** design
+- **Serverless-ready** for easy deployment
 
 ## Getting Started
 
@@ -109,7 +109,7 @@ The app is designed for easy deployment to platforms like:
 - Netlify
 - Traditional hosting providers
 
-For production deployment, set up a PostgreSQL database and configure the `DATABASE_URL` environment variable.
+The app uses in-memory storage and is ready for immediate deployment to Vercel, Netlify, or other serverless platforms.
 
 ## Contributing
 
