@@ -1,4 +1,6 @@
 import { articles, sources, categories, type Article, type InsertArticle, type Source, type Category } from "@shared/schema";
+import { db } from "./db";
+import { eq, and, or, ilike, desc } from "drizzle-orm";
 
 export interface IStorage {
   // Articles
@@ -471,4 +473,70 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Database Storage Implementation
+export class DatabaseStorage implements IStorage {
+  async getArticles(filters?: {
+    sources?: string[];
+    categories?: string[];
+    timeRange?: string;
+    search?: string;
+    featured?: boolean;
+  }): Promise<Article[]> {
+    let query = db.select().from(articles);
+    
+    const conditions = [];
+    
+    if (filters?.search) {
+      conditions.push(
+        or(
+          ilike(articles.title, `%${filters.search}%`),
+          ilike(articles.content, `%${filters.search}%`),
+          ilike(articles.source, `%${filters.search}%`)
+        )
+      );
+    }
+    
+    if (filters?.featured !== undefined) {
+      conditions.push(eq(articles.featured, filters.featured));
+    }
+    
+    if (conditions.length > 0) {
+      query = query.where(and(...conditions));
+    }
+    
+    const result = await query.orderBy(desc(articles.publishedAt));
+    return result;
+  }
+
+  async getArticle(id: number): Promise<Article | undefined> {
+    const [article] = await db.select().from(articles).where(eq(articles.id, id));
+    return article || undefined;
+  }
+
+  async createArticle(insertArticle: InsertArticle): Promise<Article> {
+    const [article] = await db
+      .insert(articles)
+      .values(insertArticle)
+      .returning();
+    return article;
+  }
+
+  async updateArticleLikes(id: number): Promise<Article | undefined> {
+    const [article] = await db
+      .update(articles)
+      .set({ likes: db.select({ likes: articles.likes }).from(articles).where(eq(articles.id, id)).then(r => (r[0]?.likes || 0) + 1) })
+      .where(eq(articles.id, id))
+      .returning();
+    return article || undefined;
+  }
+
+  async getSources(): Promise<Source[]> {
+    return await db.select().from(sources);
+  }
+
+  async getCategories(): Promise<Category[]> {
+    return await db.select().from(categories);
+  }
+}
+
+export const storage = process.env.DATABASE_URL ? new DatabaseStorage() : new MemStorage();
