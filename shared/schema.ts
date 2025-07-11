@@ -10,6 +10,7 @@ export const articles = pgTable("articles", {
   source: text("source").notNull(),
   sourceIcon: text("source_icon").notNull(),
   sourceColor: text("source_color").notNull(),
+  sourceUrl: text("source_url").notNull(),
   category: text("category").notNull(),
   categoryEmoji: text("category_emoji").notNull(),
   imageUrl: text("image_url").notNull(),

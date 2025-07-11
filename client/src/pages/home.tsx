@@ -44,7 +44,7 @@ export default function Home() {
   const regularArticles = articles?.filter((article: Article) => !article.featured) || [];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background smooth-scroll">
       <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
       <HeroSection />
       

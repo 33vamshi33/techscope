@@ -37,11 +37,12 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 
   return (
     <Link href={`/article/${article.id}`}>
-      <div className="bg-card rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer group card-hover">
+      <div className="bg-card rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-200 cursor-pointer group card-hover gpu-accelerated">
       <img 
         src={article.imageUrl} 
         alt={article.title}
-        className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+        className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-200 gpu-accelerated"
+        loading="lazy"
       />
       
       <div className="p-5">

@@ -85,10 +85,10 @@ export default function ArticlePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background page-transition smooth-scroll">
       <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
       
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-slide-up">
         {/* Back Button */}
         <Link href="/">
           <Button variant="ghost" className="mb-6 p-0 h-auto text-muted-foreground hover:text-primary">
@@ -147,9 +147,13 @@ export default function ArticlePage() {
 
         {/* Content */}
         <div className="prose prose-lg max-w-none mb-8">
-          <p className="text-foreground leading-relaxed text-lg">
-            {article.content}
-          </p>
+          <div className="text-foreground leading-relaxed text-lg space-y-4">
+            {article.content.split('\n\n').map((paragraph, index) => (
+              <p key={index} className="mb-4">
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
 
         {/* Action Buttons */}
@@ -173,7 +177,10 @@ export default function ArticlePage() {
               <span>Save</span>
             </Button>
           </div>
-          <Button className="gradient-bg text-white flex items-center space-x-2">
+          <Button 
+            className="gradient-bg text-white flex items-center space-x-2"
+            onClick={() => window.open(article.sourceUrl, '_blank', 'noopener,noreferrer')}
+          >
             <ExternalLink className="h-4 w-4" />
             <span>View Original</span>
           </Button>
